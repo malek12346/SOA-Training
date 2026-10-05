@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 public class UniteEnsRestApi {
     //hi instance  that will help this class
     // to manipulate data : CRUD
-    UniteEnseignementBusiness hi= new UniteEnseignementBusiness();
+    UniteEnseignementBusiness helper= new UniteEnseignementBusiness();
     //get list UEs
     @Path("/list")
     @GET
@@ -20,7 +20,7 @@ public class UniteEnsRestApi {
         //
         return Response
                 .status(200)
-                .entity(hi.getListeUE()) // Insert the name from the URL into the response
+                .entity(helper.getListeUE()) // Insert the name from the URL into the response
                 .build();
     }
 
