@@ -32,5 +32,26 @@ public class UniteEnsRestApi {
         }
         return Response.status(400).entity("error").build();
     }
+    @Path("/{inputCode}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public Response getUEByCode(@PathParam("inputCode")int code){
 
+            return Response.ok(helper.getUEByCode(code)).build();
+        }
+
+        @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public Response getUeBySemester(@QueryParam("semestre")int semester){
+        return Response.ok(helper.getUEBySemestre(semester)).build();
+        }
+        @Path("/delete")
+    @DELETE
+    public Response deleteUeByCode(@QueryParam("code")int code){
+        if (helper.deleteUniteEnseignement(code)){
+            return Response.status(200).entity("ok").build();
+        }
+        else return Response.status(400).entity("error").build();
+        }
 }
